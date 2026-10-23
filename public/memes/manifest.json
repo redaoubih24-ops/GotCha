@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "MIT",
+  "provenance": "All artwork, animation, and synthesized audio were created for this GotCha starter. No third-party memes, recordings, or samples are included.",
+  "memes": [
+    {
+      "id": "identity-crisis",
+      "tags": ["default", "robot"],
+      "image": "identity-crisis.svg",
+      "audio": "tiny-trombone.mp3",
+      "alt": "A worried lime checkbox holds a sign saying human-ish.",
+      "caption": "the algorithm has a feeling about you."
+    },
+    {
+      "id": "fine-print",
+      "tags": ["terms"],
+      "image": "fine-print.svg",
+      "audio": "tiny-trombone.mp3",
+      "alt": "A very long receipt of terms and conditions with a stamp saying: you agreed to what?",
+      "caption": "you didn’t read paragraph 8,374, did you?"
+    },
+    {
+      "id": "suspicion-intensifies",
+      "tags": ["default"],
+      "image": "suspicion.gif",
+      "stillImage": "identity-crisis.svg",
+      "audio": "tiny-trombone.mp3",
+      "alt": "An animated checkbox looks from side to side, becoming increasingly suspicious.",
+      "caption": "suspicion levels: yes."
+    }
+  ]
+}

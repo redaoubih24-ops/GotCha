@@ -1,0 +1,106 @@
+.terms-captcha {
+  color: var(--color-ink, #18221a);
+}
+
+.terms-captcha__eyebrow {
+  color: var(--color-muted, #72776e);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.terms-captcha h2 {
+  margin: 0.5rem 0;
+  font-size: clamp(1.65rem, 5vw, 2.35rem);
+  letter-spacing: -0.055em;
+}
+
+.terms-captcha > p {
+  line-height: 1.5;
+}
+
+.terms-captcha__contract {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 2px solid var(--color-ink, #18221a);
+  border-radius: var(--radius-md, 18px);
+  background: var(--color-paper, #f5f3ea);
+  font-family: monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.terms-captcha__contract ol {
+  margin: 1rem 0;
+  padding-left: 1.3rem;
+}
+
+.terms-captcha__contract li + li {
+  margin-top: 0.6rem;
+}
+
+.terms-captcha__stamp {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid currentColor;
+  background: var(--color-accent, #d4f57a);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  transform: rotate(-4deg);
+}
+
+.terms-captcha__footnote {
+  margin-bottom: 0;
+  color: var(--color-muted, #72776e);
+  font-size: 0.65rem;
+}
+
+.terms-captcha__agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.terms-captcha__agreement input {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.1rem;
+  accent-color: var(--color-ink, #18221a);
+}
+
+.terms-captcha__submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--color-ink, #18221a);
+  border-radius: 12px;
+  background: var(--color-accent, #d4f57a);
+  color: var(--color-ink, #18221a);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.terms-captcha__submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.terms-captcha__submit:focus-visible,
+.terms-captcha__agreement input:focus-visible {
+  outline: 3px solid var(--color-ink, #18221a);
+  outline-offset: 4px;
+}

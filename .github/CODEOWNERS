@@ -1,0 +1,11 @@
+# Replace these commented examples with actual GitHub handles or teams.
+# Owners must have write access to this repository.
+# Keep one owner/team per shared area to reduce parallel edits.
+
+# /src/app/ @your-org/app-team
+# /src/login/ @your-org/login-team
+# /src/meme/ @your-org/meme-team
+# /src/brand/ @your-org/brand-team
+
+# Optional: assign each developer only their own CAPTCHA folder.
+# /src/captchas/example/ @your-github-handle

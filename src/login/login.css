@@ -1,0 +1,320 @@
+.login-page {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  align-items: start;
+  gap: clamp(3rem, 8vw, 8rem);
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 3.75rem 0 3.2rem;
+}
+
+.login-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.login-eyebrow > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-ink);
+}
+
+.login-intro h1 {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 6.6vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.99;
+}
+
+.login-intro h1 > span {
+  position: relative;
+  z-index: 0;
+}
+
+.login-intro h1 > span::after {
+  position: absolute;
+  z-index: -1;
+  right: -0.025em;
+  bottom: 0.045em;
+  left: 0;
+  height: 0.22em;
+  transform: rotate(-2deg);
+  border-radius: 4px;
+  background: var(--color-accent);
+  content: '';
+}
+
+.login-description {
+  margin: 1.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.login-mascot {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  margin: 1.1rem 0 0 0.9rem;
+}
+
+.login-mascot svg {
+  display: block;
+  width: 100%;
+}
+
+.login-mascot-note {
+  position: absolute;
+  top: 24%;
+  right: -1rem;
+  padding: 0.6rem 0.9rem;
+  transform: rotate(8deg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  box-shadow: 0 3px 0 #e9eadf;
+}
+
+.login-fine-print {
+  margin: 0.25rem 0 0;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  line-height: 1.65;
+}
+
+.login-card {
+  margin-top: 0.1rem;
+  padding: 1.8rem 2rem 1.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.login-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.login-card-label {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  line-height: 1.5;
+}
+
+.login-card-lock {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-muted);
+}
+
+.login-card-lock svg {
+  width: 18px;
+  height: 18px;
+}
+
+.login-card h2 {
+  margin: 1rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+
+.login-card h2 > span {
+  color: var(--color-muted);
+}
+
+.login-card-description {
+  max-width: 29ch;
+  margin: 0.85rem 0 1.7rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.login-field {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.login-field-status {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.login-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 47px;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: #f7f7f0;
+  color: var(--color-muted);
+  font: 0.8rem var(--font-body);
+  cursor: default;
+}
+
+.login-password-label {
+  margin-top: 1.05rem;
+}
+
+.login-fake-password {
+  letter-spacing: 0.2em;
+}
+
+.login-human-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.15rem 0 1.3rem;
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  line-height: 1.6;
+}
+
+.login-check-icon {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  flex: none;
+  place-items: center;
+  border: 1px solid #a5b67d;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.login-submit {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font: 700 0.9rem var(--font-body);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.login-submit:hover {
+  transform: translateY(-2px);
+  background: #c7eb63;
+}
+
+.login-submit > span {
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.login-demo-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.login-demo-badge {
+  padding: 0.3rem 0.35rem;
+  flex: none;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
+.login-demo-note p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.6rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 780px) {
+  .login-page {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    max-width: 500px;
+    padding: 2.4rem 0 3rem;
+  }
+
+  .login-intro h1 {
+    font-size: clamp(4rem, 13vw, 5.5rem);
+  }
+
+  .login-mascot {
+    display: none;
+  }
+
+  .login-fine-print {
+    margin-top: 1.25rem;
+  }
+
+  .login-card {
+    padding: 1.6rem;
+  }
+
+  .login-card h2 {
+    font-size: 2.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-submit {
+    transition: none;
+  }
+
+  .login-submit:hover {
+    transform: none;
+  }
+}

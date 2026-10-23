@@ -1,0 +1,38 @@
+:root {
+  color-scheme: light;
+  --color-ink: #18221a;
+  --color-paper: #f5f3ea;
+  --color-accent: #d4f57a;
+  --color-muted: #72776e;
+  --color-white: #fffef9;
+  --color-line: #dedfd3;
+  --color-soft: #edeee4;
+  --color-danger: #ad352d;
+  --font-body: 'Arial', 'Helvetica Neue', sans-serif;
+  --font-display: 'Arial', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow-card: 0 10px 0 -4px #e4e5d7;
+  --transition-fast: 160ms ease;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 1;
+}
+
+.brand-logo svg {
+  flex: none;
+  width: 1.65rem;
+  height: 1.65rem;
+}

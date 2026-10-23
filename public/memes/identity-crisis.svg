@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title id="title">A worried checkbox holding a human-ish sign</title>
+  <rect width="640" height="360" fill="#e9eddc"/>
+  <path d="M0 300h640M50 0v360m540-360v360" stroke="#d4daca" stroke-width="2"/>
+  <ellipse cx="320" cy="316" rx="120" ry="14" fill="#18221a" opacity=".08"/>
+  <rect x="235" y="55" width="175" height="185" rx="40" transform="rotate(-6 235 55)" fill="#d4f57a" stroke="#18221a" stroke-width="4"/>
+  <ellipse cx="285" cy="129" rx="18" ry="25" fill="#fffef9"/>
+  <ellipse cx="345" cy="123" rx="18" ry="25" fill="#fffef9"/>
+  <ellipse cx="290" cy="132" rx="7" ry="12" fill="#18221a"/>
+  <ellipse cx="350" cy="126" rx="7" ry="12" fill="#18221a"/>
+  <path d="m280 88 21 4m32-6 19-7m-43 100 20-2m-77 51-35 30m156-29 41 14m-139 5-11 49m84-49 12 49" stroke="#18221a" stroke-width="5" stroke-linecap="round"/>
+  <rect x="191" y="225" width="263" height="72" rx="8" transform="rotate(3 191 225)" fill="#fffef9" stroke="#18221a" stroke-width="3"/>
+  <text x="322" y="273" text-anchor="middle" fill="#18221a" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" transform="rotate(3 322 260)">human-ish.</text>
+  <text x="108" y="88" fill="#72776e" font-family="monospace" font-size="16" transform="rotate(-12 108 88)">be normal.</text>
+  <text x="455" y="156" fill="#72776e" font-family="monospace" font-size="16" transform="rotate(8 455 156)">nailed it.</text>
+</svg>

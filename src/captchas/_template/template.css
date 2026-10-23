@@ -1,0 +1,22 @@
+.starter-captcha {
+  color: var(--color-ink, #18221a);
+}
+
+.starter-captcha__eyebrow {
+  color: var(--color-muted, #72776e);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.starter-captcha__button {
+  padding: 0.9rem 1.25rem;
+  border: 2px solid var(--color-ink, #18221a);
+  border-radius: var(--radius-md, 18px);
+  background: var(--color-accent, #d4f57a);
+  color: var(--color-ink, #18221a);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}

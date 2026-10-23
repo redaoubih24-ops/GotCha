@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+package-lock.json
+public/memes/*.svg
+public/memes/*.gif
+public/memes/*.mp3
+public/memes/*.wav
