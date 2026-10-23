@@ -1,7 +1,14 @@
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import Logo from '../brand/Logo';
+import { forgotPasswordLines, lineForAttempt } from './copy';
 import './login.css';
 
 export interface LoginPageProps {
+  /** Called with no arguments: credentials never leave this component. */
   onSubmit: () => void;
+  /** Failed attempts so far. Drives the escalating microcopy. */
+  attemptCount?: number;
 }
 
 function CheckboxMascot() {
@@ -57,7 +64,22 @@ function CheckboxMascot() {
   );
 }
 
-export function LoginPage({ onSubmit }: LoginPageProps) {
+export function LoginPage({ onSubmit, attemptCount = 0 }: LoginPageProps) {
+  // Held only in memory, cleared on submit, and never passed anywhere.
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [forgotIndex, setForgotIndex] = useState(-1);
+  const escalation = lineForAttempt(attemptCount);
+  const returning = attemptCount > 0;
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setUsername('');
+    setPassword('');
+    setForgotIndex(-1);
+    onSubmit();
+  }
+
   return (
     <main className="login-page">
       <section className="login-intro" aria-labelledby="login-title">
@@ -80,7 +102,7 @@ export function LoginPage({ onSubmit }: LoginPageProps) {
 
       <section className="login-card" aria-labelledby="login-card-title">
         <div className="login-card-topline">
-          <span className="login-card-label">YOUR VERY IMPORTANT ACCOUNT</span>
+          <Logo className="login-card-logo" />
           <span className="login-card-lock" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <rect
@@ -104,43 +126,65 @@ export function LoginPage({ onSubmit }: LoginPageProps) {
         <h2 id="login-card-title">
           Welcome back.
           <br />
-          <span>Probably.</span>
+          <span>{returning ? 'Again.' : 'Probably.'}</span>
         </h2>
         <p className="login-card-description">
           Just one tiny security check between you and absolutely nothing.
         </p>
 
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            onSubmit();
-          }}
-        >
-          <label className="login-field" htmlFor="demo-email">
-            Email address
-            <span className="login-field-status">PRE-FILLED, FOR YOUR SAFETY</span>
+        <div className="login-escalation-slot" aria-live="polite">
+          {escalation && (
+            <p className="login-escalation" key={escalation}>
+              <span className="login-escalation-count">ATTEMPT {attemptCount + 1}</span>
+              {escalation}
+            </p>
+          )}
+        </div>
+
+        <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+          <label className="login-field" htmlFor="login-username">
+            Username
           </label>
           <input
-            id="demo-email"
+            id="login-username"
             className="login-input"
             type="text"
-            value="human.ish@example.test"
-            readOnly
-            aria-describedby="login-demo-note"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            placeholder="human.ish"
             autoComplete="off"
+            autoCapitalize="none"
+            spellCheck={false}
+            data-1p-ignore
+            data-lpignore="true"
           />
-          <label className="login-field login-password-label" htmlFor="demo-password">
-            Extremely secure password
-          </label>
+          <div className="login-password-row">
+            <label className="login-field" htmlFor="login-password">
+              Password
+            </label>
+            <button
+              type="button"
+              className="login-forgot"
+              onClick={() => setForgotIndex((index) => (index + 1) % forgotPasswordLines.length)}
+            >
+              Forgot password?
+            </button>
+          </div>
           <input
-            id="demo-password"
-            className="login-input login-fake-password"
-            type="text"
-            value="••••••••••••"
-            readOnly
+            id="login-password"
+            className="login-input"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Anything but your real one"
             aria-describedby="login-demo-note"
             autoComplete="off"
+            data-1p-ignore
+            data-lpignore="true"
           />
+          <p className="login-forgot-reply" aria-live="polite">
+            {forgotIndex >= 0 && <span key={forgotIndex}>{forgotPasswordLines[forgotIndex]}</span>}
+          </p>
           <div className="login-human-note">
             <span className="login-check-icon" aria-hidden="true">
               ✓
@@ -148,14 +192,14 @@ export function LoginPage({ onSubmit }: LoginPageProps) {
             I am, to the best of my knowledge, human.
           </div>
           <button className="login-submit" type="submit">
-            Let’s prove it <span aria-hidden="true">↗</span>
+            Sign in <span aria-hidden="true">↗</span>
           </button>
         </form>
 
         <div className="login-demo-note" id="login-demo-note">
           <span className="login-demo-badge">JUST A DEMO</span>
           <p>
-            No real account. No real credentials.
+            No real account. Nothing you type is saved or sent.
             <br />
             Just a deeply unreasonable CAPTCHA.
           </p>
