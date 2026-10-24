@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { CaptchaResult } from '../captchas/types';
 import { assetUrl, loadMemes, peekNextSound, pickMeme, pickSound, type MemeAsset } from './assets';
+import { installAudioUnlock, takeAudio } from './audioUnlock';
 import { Explosion } from './Explosion';
 import { MemeArtwork } from './MemeArtwork';
 import './meme.css';
@@ -11,6 +12,11 @@ export interface MemeTransitionProps {
   result: CaptchaResult;
   onDone: () => void;
 }
+// Safari blocks sounds that start after a click unless an unlocked element is reused.
+if (import.meta.env.MODE !== 'test') installAudioUnlock();
+
+/** Clips are loudness-matched, so one volume works for all of them. */
+const VOLUME = 0.7;
 const MINIMUM_MS = 3500;
 const FADE_MS = 600;
 const MUTE_KEY = 'gotcha:meme-muted';
@@ -161,10 +167,10 @@ export function ActiveMeme({
       minimumElapsed = true;
       if (audioEnded) fadeRef.current();
     }, MINIMUM_MS);
-    const sound = new Audio(assetUrl(meme.sound));
+    const { audio: sound, release } = takeAudio(assetUrl(meme.sound));
     clip.current = sound;
     sound.preload = 'auto';
-    sound.volume = 0.35;
+    sound.volume = VOLUME;
     sound.muted = muted || forceMuted;
     sound.onended = done;
     sound.onerror = done;
@@ -194,6 +200,7 @@ export function ActiveMeme({
       sound.onended = null;
       sound.onerror = null;
       sound.pause();
+      release();
       clip.current = undefined;
     };
     // Mute changes affect this clip in place without restarting the minimum display time.
