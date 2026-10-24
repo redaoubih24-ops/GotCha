@@ -50,31 +50,31 @@ describe('MemeModal', () => {
     originalButton.remove();
   });
 
-  it('returns after 4.5 seconds even when the parent updates its callback', () => {
+  it('returns after the minimum even when the parent updates its callback', async () => {
     const oldCallback = vi.fn();
     const currentCallback = vi.fn();
-    const { rerender } = render(<MemeModal result={result} onContinue={oldCallback} muted />);
+    let rerender!: ReturnType<typeof render>['rerender'];
+    await act(async () => {
+      ({ rerender } = render(<MemeModal result={result} onContinue={oldCallback} muted />));
+    });
     act(() => vi.advanceTimersByTime(3000));
     rerender(<MemeModal result={result} onContinue={currentCallback} muted />);
-    act(() => vi.advanceTimersByTime(1500));
+    act(() => vi.advanceTimersByTime(1100));
 
     expect(oldCallback).not.toHaveBeenCalled();
     expect(currentCallback).toHaveBeenCalledOnce();
     expect(play).not.toHaveBeenCalled();
   });
 
-  it('offers sound replay when autoplay is blocked', async () => {
+  it('continues silently with no visible controls when autoplay is blocked', async () => {
     play.mockRejectedValueOnce(new Error('User gesture required'));
+    const onContinue = vi.fn();
     await act(async () => {
-      render(<MemeModal result={result} onContinue={vi.fn()} />);
+      render(<MemeModal result={result} onContinue={onContinue} />);
     });
-    const replay = screen.getByRole('button', { name: /replay sound/i });
-    await act(async () => {
-      fireEvent.click(replay);
-    });
-
-    expect(play).toHaveBeenCalledTimes(2);
     expect(screen.queryByRole('button', { name: /replay sound/i })).not.toBeInTheDocument();
+    act(() => vi.advanceTimersByTime(4100));
+    expect(onContinue).toHaveBeenCalledOnce();
   });
 
   it('uses a tagged meme and its static alternative when reduced motion is enabled', async () => {

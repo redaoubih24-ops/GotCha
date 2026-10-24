@@ -1,32 +1,335 @@
-{
-  "version": 1,
-  "license": "MIT",
-  "provenance": "All artwork, animation, and synthesized audio were created for this GotCha starter. No third-party memes, recordings, or samples are included.",
-  "memes": [
-    {
-      "id": "identity-crisis",
-      "tags": ["default", "robot"],
-      "image": "identity-crisis.svg",
-      "audio": "tiny-trombone.mp3",
-      "alt": "A worried lime checkbox holds a sign saying human-ish.",
-      "caption": "the algorithm has a feeling about you."
-    },
-    {
-      "id": "fine-print",
-      "tags": ["terms"],
-      "image": "fine-print.svg",
-      "audio": "tiny-trombone.mp3",
-      "alt": "A very long receipt of terms and conditions with a stamp saying: you agreed to what?",
-      "caption": "you didn’t read paragraph 8,374, did you?"
-    },
-    {
-      "id": "suspicion-intensifies",
-      "tags": ["default"],
-      "image": "suspicion.gif",
-      "stillImage": "identity-crisis.svg",
-      "audio": "tiny-trombone.mp3",
-      "alt": "An animated checkbox looks from side to side, becoming increasingly suspicious.",
-      "caption": "suspicion levels: yes."
-    }
-  ]
-}
+[
+  {
+    "id": "deep-thought",
+    "image": "/memes/hackathon-deep-thought.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "THE CAPTCHA THINKING",
+    "bottomText": "OF ANOTHER REASON TO FAIL ME",
+    "alt": "A monkey with a hand on its chin."
+  },
+  {
+    "id": "trust-offering",
+    "image": "/memes/hackathon-trust-offering.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal", "robot"],
+    "caption": "ME: I AM HUMAN",
+    "bottomText": "GOTCHA: WE SHOULD SEE OTHER PEOPLE",
+    "alt": "A person making a heart with their hands."
+  },
+  {
+    "id": "secret-human",
+    "image": "/memes/hackathon-secret-human.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "suspicious"],
+    "caption": "I KNOW THE ANSWER",
+    "bottomText": "THE CAPTCHA DOES NOT",
+    "alt": "A baby holding a finger to their lips."
+  },
+  {
+    "id": "scanner-doubts",
+    "image": "/memes/hackathon-scanner-doubts.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "WHEN THE SECURITY SYSTEM",
+    "bottomText": "FAILS ITS OWN VIBE CHECK",
+    "alt": "A person wearing headphones with a puzzled expression."
+  },
+  {
+    "id": "system-panic",
+    "image": "/memes/hackathon-system-panic.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "confused"],
+    "caption": "ONE HUMAN CLICKS A BOX",
+    "bottomText": "THE ENTIRE SECURITY TEAM:",
+    "alt": "Cartoon sea creatures looking alarmed."
+  },
+  {
+    "id": "casual-security",
+    "image": "/memes/hackathon-casual-security.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["default"],
+    "caption": "THE SECURITY SYSTEM",
+    "bottomText": "AFTER DOING ABSOLUTELY NOTHING",
+    "alt": "A person lying down and smiling."
+  },
+  {
+    "id": "freedom-denied",
+    "image": "/memes/hackathon-freedom-denied.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal"],
+    "caption": "ME THINKING I FINALLY GOT IN",
+    "bottomText": "GOTCHA: ONE MORE THING",
+    "alt": "A person stretching their arms out with eyes closed."
+  },
+  {
+    "id": "scientific-method",
+    "image": "/memes/hackathon-scientific-method.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["default", "confused"],
+    "caption": "OUR TOTALLY SCIENTIFIC",
+    "bottomText": "HUMAN DETECTION METHOD",
+    "alt": "A cartoon creature riding a unicorn under a rainbow."
+  },
+  {
+    "id": "unexpected-pass",
+    "image": "/memes/hackathon-unexpected-pass.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["pass", "celebration"],
+    "caption": "THE SYSTEM WHEN",
+    "bottomText": "SOMEONE ACTUALLY PASSES",
+    "alt": "A cartoon character with a wide open mouth."
+  },
+  {
+    "id": "firewall",
+    "image": "/memes/hackathon-firewall.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["default", "suspicious"],
+    "caption": "THE FIREWALL",
+    "bottomText": "IS MOSTLY VIBES",
+    "alt": "Two hooded figures surrounded by flames."
+  },
+  {
+    "id": "staring-contest",
+    "image": "/memes/hackathon-staring-contest.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "ME WAITING FOR THE CAPTCHA",
+    "bottomText": "TO EXPLAIN ITS REASONING",
+    "alt": "A close-up of a face looking straight ahead."
+  },
+  {
+    "id": "terms-regret",
+    "image": "/memes/hackathon-terms-regret.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms", "betrayal"],
+    "caption": "ME AND THE TERMS",
+    "bottomText": "NEITHER OF US UNDERSTANDS THIS",
+    "alt": "Two people with distressed expressions."
+  },
+  {
+    "id": "human-enough",
+    "image": "/memes/hackathon-human-enough.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "betrayal"],
+    "caption": "ME: CLICKS THE BOX",
+    "bottomText": "GOTCHA: TOO ACCURATE",
+    "alt": "A person with raised eyebrows and an uncertain smile."
+  },
+  {
+    "id": "born-suspicious",
+    "image": "/memes/hackathon-born-suspicious.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["suspicious", "confused"],
+    "caption": "THE SYSTEM INVESTIGATING",
+    "bottomText": "A SINGLE MOUSE CLICK",
+    "alt": "A baby with a thoughtful expression."
+  },
+  {
+    "id": "villain-logic",
+    "image": "/memes/hackathon-villain-logic.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal", "terms"],
+    "caption": "THE CAPTCHA AFTER",
+    "bottomText": "MOVING THE GOALPOSTS AGAIN",
+    "alt": "Two illustrated comic characters smiling."
+  },
+  {
+    "id": "another-round",
+    "image": "/memes/hackathon-another-round.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal", "robot"],
+    "caption": "WHEN IT SAYS",
+    "bottomText": "JUST ONE MORE SECURITY CHECK",
+    "alt": "An anime character covering their face."
+  },
+  {
+    "id": "unconvinced",
+    "image": "/memes/hackathon-unconvinced.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "suspicious"],
+    "caption": "ME: I HAVE A PULSE",
+    "bottomText": "GOTCHA: CIRCUMSTANTIAL EVIDENCE",
+    "alt": "A person staring at the camera with a serious expression."
+  },
+  {
+    "id": "classified-logic",
+    "image": "/memes/hackathon-classified-logic.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["suspicious", "terms"],
+    "caption": "WHY DID I FAIL?",
+    "bottomText": "THE ALGORITHM: CLASSIFIED",
+    "alt": "A person holding a finger to their lips."
+  },
+  {
+    "id": "processing",
+    "image": "/memes/hackathon-processing.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "GOTCHA CALCULATING",
+    "bottomText": "HOW HUMAN A CLICK LOOKS",
+    "alt": "A person resting a hand against their forehead."
+  },
+  {
+    "id": "ancient-check",
+    "image": "/memes/hackathon-ancient-check.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms", "default"],
+    "caption": "THIS SECURITY CHECK",
+    "bottomText": "HAS OUTLIVED THREE CIVILIZATIONS",
+    "alt": "A seated dinosaur watching a distant explosion."
+  },
+  {
+    "id": "still-waiting",
+    "image": "/memes/hackathon-still-waiting.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms"],
+    "caption": "ME AFTER READING",
+    "bottomText": "ALL 8,374 PARAGRAPHS",
+    "alt": "An illustrated creature looking wide-eyed."
+  },
+  {
+    "id": "serious-business",
+    "image": "/memes/hackathon-serious-business.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "suspicious"],
+    "caption": "THE SYSTEM EXAMINING",
+    "bottomText": "MY VERY SUSPICIOUS LEFT CLICK",
+    "alt": "A close-up of a stern face."
+  },
+  {
+    "id": "all-caps",
+    "image": "/memes/hackathon-all-caps.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "confused"],
+    "caption": "GOTCHA WHEN YOU CLICK",
+    "bottomText": "EXACTLY WHERE IT ASKED",
+    "alt": "A face with wide eyes and an open mouth."
+  },
+  {
+    "id": "almost-there",
+    "image": "/memes/hackathon-almost-there.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms", "betrayal"],
+    "caption": "ME AFTER THE FINAL CHECK",
+    "bottomText": "THERE IS ANOTHER FINAL CHECK",
+    "alt": "An animated green character with an open mouth."
+  },
+  {
+    "id": "everything-fine",
+    "image": "/memes/hackathon-everything-fine.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["default", "confused"],
+    "caption": "ALL SYSTEMS OPERATIONAL",
+    "bottomText": "THE SYSTEMS:",
+    "alt": "A stylized smiling face surrounded by fire."
+  },
+  {
+    "id": "security-council",
+    "image": "/memes/hackathon-security-council.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "celebration"],
+    "caption": "THE SECURITY TEAM",
+    "bottomText": "CELEBRATING ONE BLOCKED HUMAN",
+    "alt": "A group of people smiling together outdoors."
+  },
+  {
+    "id": "polite-rejection",
+    "image": "/memes/hackathon-polite-rejection.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "betrayal"],
+    "caption": "GOTCHA: THANKS FOR VERIFYING",
+    "bottomText": "WE HAVE LEARNED NOTHING",
+    "alt": "A person wearing glasses with a restrained smile."
+  },
+  {
+    "id": "checking-check",
+    "image": "/memes/hackathon-checking-check.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "ME CHECKING IF",
+    "bottomText": "THE CHECKBOX CHECKED",
+    "alt": "A person looking up toward the camera."
+  },
+  {
+    "id": "please-trust",
+    "image": "/memes/hackathon-please-trust.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "suspicious"],
+    "caption": "ME: TRUST ME",
+    "bottomText": "GOTCHA: THAT SOUNDS AUTOMATED",
+    "alt": "A person with raised eyebrows looking at the camera."
+  },
+  {
+    "id": "night-shift",
+    "image": "/memes/hackathon-night-shift.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["suspicious", "default"],
+    "caption": "THE SERVER AT 3 AM",
+    "bottomText": "STILL JUDGING MY CLICK",
+    "alt": "A yellow character wearing a scarf in a doorway."
+  },
+  {
+    "id": "love-denied",
+    "image": "/memes/hackathon-love-denied.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal", "terms"],
+    "caption": "ME SENDING GOOD VIBES",
+    "bottomText": "GOTCHA ACCEPTS PDF EVIDENCE ONLY",
+    "alt": "A person making a heart with their hands against a sky background."
+  },
+  {
+    "id": "plot-twist",
+    "image": "/memes/hackathon-plot-twist.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "robot"],
+    "caption": "WHEN THE CAPTCHA",
+    "bottomText": "ACCUSES THE DEVELOPER OF BEING A BOT",
+    "alt": "A person looking surprised with their mouth open."
+  },
+  {
+    "id": "not-convinced",
+    "image": "/memes/hackathon-not-convinced.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["robot", "suspicious"],
+    "caption": "ME EXPLAINING I AM HUMAN",
+    "bottomText": "THE REVIEW COMMITTEE:",
+    "alt": "A person looking sideways with a skeptical expression."
+  },
+  {
+    "id": "one-more",
+    "image": "/memes/hackathon-one-more.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms", "betrayal"],
+    "caption": "THE LOGIN SAID ONE TINY CHECK",
+    "bottomText": "THAT WAS FOUR CHECKS AGO",
+    "alt": "A person holding their hands alongside their face."
+  },
+  {
+    "id": "on-hold",
+    "image": "/memes/hackathon-on-hold.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["confused", "default"],
+    "caption": "ME WAITING FOR",
+    "bottomText": "THE ALGORITHM TO HAVE A FEELING",
+    "alt": "A seated person holding a phone to their ear."
+  },
+  {
+    "id": "read-again",
+    "image": "/memes/hackathon-read-again.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["terms", "confused"],
+    "caption": "THE TERMS SAID WHAT?",
+    "bottomText": "SCROLL BACK TO PARAGRAPH 8,374",
+    "alt": "A person outdoors gesturing toward their head."
+  },
+  {
+    "id": "back-to-login",
+    "image": "/memes/hackathon-back-to-login.jpg",
+    "sound": "/memes/identity-crisis.wav",
+    "tags": ["betrayal", "default"],
+    "caption": "THE LOGIN SCREEN",
+    "bottomText": "SEEING ME COME BACK AGAIN",
+    "alt": "A person on the phone with a knowing expression."
+  }
+]
