@@ -4,7 +4,7 @@ The active manifest uses 37 user-supplied pictures copied from `Hackathonpicss/`
 
 Each entry in `manifest.json` contains `id`, `image`, `sound`, and `tags`. `caption` is the top meme text; `bottomText` is the bottom text. Both are rendered directly over the picture in large outlined letters. `alt` describes the picture for screen readers. An optional `stillImage` supplies a static alternative to animation.
 
-Edit `caption` and `bottomText` to change a joke. Replace the `sound` path to change the effect; the current common effect is the original synthesized `identity-crisis.wav`. Old original SVG placeholders and synthesized WAVs are retained as spare assets but are not in the active manifest.
+Edit `caption` and `bottomText` to change a joke. **Sound:** every meme plays a random clip from `public/memes/sounds/` (never the same clip twice in a row), so the manifest's `sound` field is ignored by the transition. To add a clip, drop the file in `sounds/` and add it to `SOUNDS` in `src/meme/assets.ts`. The `/playground/memes` preview still plays each entry's manifest sound. Old original SVG placeholders and synthesized WAVs are retained as spare assets but are not in the active manifest.
 
 Preview all captioned images and sounds at `/playground/memes`. The transition keeps the white flash, temporary blur, minimum 3.5-second display, and 600ms fade back to login. Entrance settings are CSS variables at `.meme-cinema` in `src/meme/meme.css`. Reduced motion skips the effects. There are no visible app controls; captions are part of the meme.
 

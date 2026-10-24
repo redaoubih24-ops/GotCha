@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { CaptchaResult } from '../captchas/types';
-import { assetUrl, loadMemes, pickMeme, type MemeAsset } from './assets';
+import { assetUrl, loadMemes, peekNextSound, pickMeme, pickSound, type MemeAsset } from './assets';
 import { MemeArtwork } from './MemeArtwork';
 import './meme.css';
 
@@ -79,17 +79,11 @@ export function ActiveMeme({
     const timeout = window.setTimeout(() => controller.abort(), 1500);
     void loadMemes(controller.signal).then((entries) => {
       if (disposed) return;
+      // Random image, and an independently random sound from the shared clip set.
       const chosen = pickMeme(entries, result.memeTag);
-      setMeme(chosen);
-      const next =
-        entries.find(
-          (entry) =>
-            entry.id !== chosen.id && result.memeTag && entry.tags.includes(result.memeTag),
-        ) ?? entries.find((entry) => entry.id !== chosen.id);
-      if (next) {
-        preload = new Audio(assetUrl(next.sound));
-        preload.preload = 'auto';
-      }
+      setMeme({ ...chosen, sound: pickSound() });
+      preload = new Audio(assetUrl(peekNextSound()));
+      preload.preload = 'auto';
     });
     let disposed = false;
     let preload: HTMLAudioElement | undefined;

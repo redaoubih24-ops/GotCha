@@ -60,6 +60,41 @@ export async function loadMemes(signal?: AbortSignal): Promise<MemeAsset[]> {
   }
 }
 
+/**
+ * Every meme plays one of these clips at random, whatever its manifest says.
+ * To add one: drop the file in public/memes/sounds/ and list it here.
+ */
+export const SOUNDS = [
+  'sounds/sfx-1.mp3',
+  'sounds/sfx-2.mp3',
+  'sounds/sfx-3.mp3',
+  'sounds/sfx-4.mp3',
+  'sounds/sfx-5.mp3',
+  'sounds/sfx-6.mp3',
+  'sounds/sfx-7.mp3',
+  'sounds/sfx-8.mp3',
+];
+
+function randomSound(except?: string): string {
+  const pool = SOUNDS.length > 1 ? SOUNDS.filter((sound) => sound !== except) : SOUNDS;
+  return pool[Math.floor(Math.random() * pool.length)] ?? fallback.sound;
+}
+
+// The upcoming clip is chosen one step ahead so it can be preloaded.
+let upcomingSound = randomSound();
+
+/** Take the next random clip (never the same one twice in a row). */
+export function pickSound(): string {
+  const sound = upcomingSound;
+  upcomingSound = randomSound(sound);
+  return sound;
+}
+
+/** The clip the next pickSound() will return, for preloading. */
+export function peekNextSound(): string {
+  return upcomingSound;
+}
+
 let previousId: string | undefined;
 export function pickMeme(entries: MemeAsset[], tag?: string): MemeAsset {
   const fresh = entries.filter((entry) => entry.id !== previousId);
