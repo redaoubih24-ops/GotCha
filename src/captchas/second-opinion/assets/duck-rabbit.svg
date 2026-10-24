@@ -1,0 +1,43 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="600"
+  height="400"
+  viewBox="0 0 600 400"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">One head, two readings</title>
+  <desc id="desc">
+    A single outlined head with one eye. The two long shapes extending left can be a duck's open
+    bill or a rabbit's ears; the same rounded head can face left as a duck or right as a rabbit.
+  </desc>
+  <rect width="600" height="400" rx="12" fill="#fffdf6" />
+  <!-- Original contour of the classic duck/rabbit construction: one head and one eye. -->
+  <g fill="none" stroke="#18221a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path
+      fill="#fffdf6"
+      d="
+      M316 329
+      C282 313 250 278 246 245
+      C244 234 246 224 252 216
+      C215 221 164 210 121 181
+      C104 170 92 157 102 153
+      C126 145 180 155 221 166
+      C176 142 126 109 99 84
+      C88 74 88 67 103 68
+      C151 69 221 95 281 123
+      C307 111 333 105 360 108
+      C401 111 427 137 438 169
+      C445 186 457 191 469 201
+      C480 210 477 217 464 222
+      C451 247 432 265 417 280
+      C404 296 402 312 407 332
+      "
+    />
+    <!-- This single junction divides the duck's bill and joins the rabbit's ears. -->
+    <path d="M221 166C249 172 272 178 295 183" />
+    <!-- The small shared crease is a rabbit's mouth or a fold behind the duck's head. -->
+    <path d="M464 222Q446 228 429 225" />
+  </g>
+  <ellipse cx="327" cy="167" rx="9" ry="11" fill="#18221a" />
+</svg>
