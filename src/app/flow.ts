@@ -1,26 +1,61 @@
 import type { CaptchaModule, CaptchaResult } from '../captchas/types';
 
+/**
+ * The whole app is one loop:
+ *
+ *   login --SUBMIT--> captcha --COMPLETE--> meme --DONE--> login
+ *
+ * Every state carries the running history so the login page can escalate its
+ * copy and the picker can avoid repeating the previous challenge. Actions that
+ * arrive in the wrong state (a late onComplete, a double-clicked submit, a
+ * second onDone) return the current state unchanged.
+ */
+
+interface FlowHistory {
+  /** Completed challenges so far. Every one counts as a failed login. */
+  attemptCount: number;
+  /** The challenge shown most recently, so the next pick can avoid it. */
+  lastCaptchaId?: string;
+  /** The most recent result, kept so the meme can animate out after DONE. */
+  lastResult?: CaptchaResult;
+}
+
 export type FlowState =
-  | { stage: 'login'; lastCaptchaId?: string }
-  | { stage: 'captcha'; captcha: CaptchaModule }
-  | { stage: 'meme'; captcha: CaptchaModule; result: CaptchaResult };
+  | ({ stage: 'login' } & FlowHistory)
+  | ({ stage: 'captcha'; captcha: CaptchaModule } & FlowHistory)
+  | ({ stage: 'meme'; result: CaptchaResult } & FlowHistory);
+
+export type FlowStage = FlowState['stage'];
 
 export type FlowAction =
-  | { type: 'START'; captcha: CaptchaModule }
+  | { type: 'SUBMIT'; captcha: CaptchaModule }
   | { type: 'COMPLETE'; result: CaptchaResult }
-  | { type: 'RESET' };
+  | { type: 'DONE' };
 
-export const initialFlow: FlowState = { stage: 'login' };
+export const initialFlow: FlowState = { stage: 'login', attemptCount: 0 };
+
+function history({ attemptCount, lastCaptchaId, lastResult }: FlowState): FlowHistory {
+  return { attemptCount, lastCaptchaId, lastResult };
+}
 
 export function flowReducer(state: FlowState, action: FlowAction): FlowState {
   switch (action.type) {
-    case 'START':
-      return state.stage === 'login' ? { stage: 'captcha', captcha: action.captcha } : state;
+    case 'SUBMIT':
+      if (state.stage !== 'login') return state;
+      return { ...history(state), stage: 'captcha', captcha: action.captcha };
+
     case 'COMPLETE':
-      return state.stage === 'captcha'
-        ? { stage: 'meme', captcha: state.captcha, result: action.result }
-        : state;
-    case 'RESET':
-      return state.stage === 'login' ? state : { stage: 'login', lastCaptchaId: state.captcha.id };
+      if (state.stage !== 'captcha') return state;
+      return {
+        stage: 'meme',
+        result: action.result,
+        attemptCount: state.attemptCount + 1,
+        lastCaptchaId: state.captcha.id,
+        lastResult: action.result,
+      };
+
+    case 'DONE':
+      if (state.stage !== 'meme') return state;
+      return { ...history(state), stage: 'login' };
   }
 }

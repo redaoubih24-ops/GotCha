@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getAllCaptchas } from '../captchas/registry';
 import type { CaptchaModule, CaptchaResult } from '../captchas/types';
+import CaptchaErrorBoundary, { CRASH_RESULT } from './CaptchaErrorBoundary';
 import ChallengeDialog from './ChallengeDialog';
 
 export default function Playground() {
@@ -54,7 +55,12 @@ export default function Playground() {
         </p>
       )}
       {active && Component && (
-        <ChallengeDialog title={active.title} onClose={close}>
+        <ChallengeDialog
+          title={active.title}
+          author={active.author}
+          footnote="Playground run"
+          onClose={close}
+        >
           {result ? (
             <section className="isolated-result" aria-live="polite">
               <p className="eyebrow">RESULT RECEIVED</p>
@@ -83,7 +89,12 @@ export default function Playground() {
               </button>
             </section>
           ) : (
-            <Component key={`${active.id}-${attempt}`} onComplete={setResult} />
+            <CaptchaErrorBoundary
+              key={`${active.id}-${attempt}`}
+              onCrash={() => setResult(CRASH_RESULT)}
+            >
+              <Component onComplete={setResult} />
+            </CaptchaErrorBoundary>
           )}
         </ChallengeDialog>
       )}
