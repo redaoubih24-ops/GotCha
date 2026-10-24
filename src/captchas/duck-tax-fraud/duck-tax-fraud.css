@@ -1,0 +1,160 @@
+/* Theme: change these brand-variable choices to restyle your own challenge. */
+.duck-tax {
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.duck-tax__eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.duck-tax__title {
+  max-width: 22ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.duck-tax__instruction {
+  margin: 0.8rem 0 1.2rem;
+  color: var(--color-muted);
+  font-size: 0.77rem;
+  line-height: 1.65;
+}
+
+.duck-tax__fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Grid: keep three columns for the nine-suspect version, including on small screens. */
+.duck-tax__grid {
+  display: grid;
+  /* Leave room for the heading and Verify button; very short screens can still scroll. */
+  width: min(100%, max(216px, calc(100svh - 360px)));
+  margin-inline: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.35rem, 1.7vw, 0.6rem);
+}
+
+/* Tiles: every image uses this exact same square crop. The repetition is the joke. */
+.duck-tax__tile {
+  position: relative;
+  display: block;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.duck-tax__image-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--color-soft);
+}
+
+.duck-tax__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hide only the radio's appearance; it stays focusable and keeps native arrow-key behavior. */
+.duck-tax__radio,
+.duck-tax__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.duck-tax__radio:checked + .duck-tax__image-frame {
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.duck-tax__radio:focus-visible + .duck-tax__image-frame {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+.duck-tax__radio:disabled + .duck-tax__image-frame {
+  cursor: default;
+}
+
+.duck-tax__selected {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 0.2rem;
+  left: 0.2rem;
+  padding: 0.25rem 0.1rem;
+  border: 1px solid var(--color-ink);
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-size: clamp(0.45rem, 1.8vw, 0.6rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.duck-tax__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.duck-tax__footer p {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.6;
+}
+
+.duck-tax__verify {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.1rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font: 700 0.8rem var(--font-body);
+  cursor: pointer;
+}
+
+.duck-tax__verify:hover:enabled {
+  background: #c7eb63;
+}
+
+.duck-tax__verify:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

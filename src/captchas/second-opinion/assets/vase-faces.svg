@@ -1,0 +1,54 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="600"
+  height="400"
+  viewBox="0 0 600 400"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">A reversible vase and two faces</title>
+  <desc id="desc">
+    A single cream shape against black. Its shared left and right edges can be seen as the outline
+    of a vase or as two black face profiles looking toward each other.
+  </desc>
+  <rect width="600" height="400" rx="12" fill="#18221a" />
+  <!-- One shared contour: the cream vase has no outline independent of the profiles. -->
+  <path
+    fill="#fffdf6"
+    d="
+    M166 35
+    H434
+    C420 48 413 70 414 89
+    C414 105 407 116 396 126
+    C393 130 387 132 386 139
+    L355 168
+    Q351 174 360 177
+    L377 181
+    Q380 187 370 192
+    Q365 195 372 198
+    Q363 205 373 212
+    C383 223 402 221 405 238
+    C406 259 384 279 364 294
+    L361 317
+    C361 331 378 337 407 343
+    L423 350
+    V365
+    H177
+    V350
+    L193 343
+    C222 337 239 331 239 317
+    L236 294
+    C216 279 194 259 195 238
+    C198 221 217 223 227 212
+    Q237 205 228 198
+    Q235 195 230 192
+    Q220 187 223 181
+    L240 177
+    Q249 174 245 168
+    L214 139
+    C213 132 207 130 204 126
+    C193 116 186 105 186 89
+    C187 70 180 48 166 35
+    Z"
+  />
+</svg>
