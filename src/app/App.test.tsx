@@ -44,6 +44,8 @@ vi.mock('../captchas/registry', () => {
   return {
     getAllCaptchas: () => pool,
     getCaptchaById: (id: string) => fixtures.find((captcha) => captcha.id === id),
+    pickNextCaptcha: (lastId?: string) =>
+      pool[(pool.findIndex(({ id }) => id === lastId) + 1) % pool.length],
     pickRandomCaptcha: (excludeId?: string) => pool.find(({ id }) => id !== excludeId) ?? pool[0],
   };
 });

@@ -30,15 +30,15 @@ describe('CAPTCHA ownership boundaries', () => {
 
   it.each([
     '../registry',
-    '../stable-handshake/index',
+    '../runaway-light/index',
     '../../app/App',
     '../../login/LoginPage',
     '../../meme/MemeModal',
-    '@/captchas/terms-and-conditions/index',
+    '@/captchas/skittish-piece/index',
     '@/app/App',
     'src/login/LoginPage',
     'lodash',
-    './nested/../../stable-handshake',
+    './nested/../../runaway-light',
     '@/brand/../login/LoginPage',
   ])('blocks %s', async (source) => {
     expect(await boundaryErrors(`import '${source}';`)).toHaveLength(1);

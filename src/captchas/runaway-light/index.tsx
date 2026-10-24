@@ -6,6 +6,7 @@ const captcha: CaptchaModule = {
   title: 'Select the Traffic Lights',
   author: 'Thomas',
   weight: 1,
+  order: 1,
   Component: RunawayLightCaptcha,
 };
 

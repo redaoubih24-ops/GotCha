@@ -16,5 +16,10 @@ export interface CaptchaModule {
   author: string;
   /** Relative odds of being selected. Must be finite and greater than zero. */
   weight?: number;
+  /**
+   * Position in the login sequence: lowest goes first, then it loops.
+   * CAPTCHAs without an order run after the ordered ones, alphabetically by folder.
+   */
+  order?: number;
   Component: React.FC<CaptchaProps>;
 }

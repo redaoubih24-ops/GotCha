@@ -2,13 +2,27 @@ import { existsSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getAllCaptchas, getCaptchaById, pickRandomCaptcha } from './registry';
+import {
+  getAllCaptchas,
+  getCaptchaById,
+  nextInSequence,
+  pickNextCaptcha,
+  pickRandomCaptcha,
+  sortByOrder,
+} from './registry';
 import { pickWeightedCaptcha } from './selection';
 import type { CaptchaModule } from './types';
 import { validateCaptchaModules } from './validation';
 
-function fixture(id: string, weight?: number): CaptchaModule {
-  return { id, title: `CAPTCHA ${id}`, author: 'Test author', weight, Component: () => null };
+function fixture(id: string, weight?: number, order?: number): CaptchaModule {
+  return {
+    id,
+    title: `CAPTCHA ${id}`,
+    author: 'Test author',
+    weight,
+    order,
+    Component: () => null,
+  };
 }
 
 afterEach(() => vi.restoreAllMocks());
@@ -73,7 +87,53 @@ describe('CAPTCHA registry', () => {
   });
 });
 
+describe('login sequence', () => {
+  it('runs the traffic light first, then the puzzle piece, then loops', () => {
+    expect(
+      getAllCaptchas()
+        .map(({ id }) => id)
+        .slice(0, 2),
+    ).toEqual(['runaway-light', 'skittish-piece']);
+    expect(pickNextCaptcha()?.id).toBe('runaway-light');
+    expect(pickNextCaptcha('runaway-light')?.id).toBe('skittish-piece');
+    const last = getAllCaptchas().at(-1)?.id;
+    expect(pickNextCaptcha(last)?.id).toBe('runaway-light');
+  });
+
+  it('sorts by order, puts unordered modules last, and keeps folder order for ties', () => {
+    const sorted = sortByOrder([
+      fixture('unordered-a'),
+      fixture('third', 1, 3),
+      fixture('first', 1, 1),
+      fixture('unordered-b'),
+      fixture('second', 1, 2),
+    ]);
+    expect(sorted.map(({ id }) => id)).toEqual([
+      'first',
+      'second',
+      'third',
+      'unordered-a',
+      'unordered-b',
+    ]);
+  });
+
+  it('starts at the beginning for an unknown id and handles an empty list', () => {
+    const list = [fixture('a'), fixture('b')];
+    expect(nextInSequence(list, 'nope')?.id).toBe('a');
+    expect(nextInSequence(list, 'b')?.id).toBe('a');
+    expect(nextInSequence([], 'a')).toBeUndefined();
+  });
+});
+
 describe('CAPTCHA contract validation', () => {
+  it.each([Number.NaN, Number.POSITIVE_INFINITY, '1'])('rejects invalid order %s', (order) => {
+    expect(() =>
+      validateCaptchaModules([
+        { path: './broken/index.tsx', module: { default: { ...fixture('invalid'), order } } },
+      ]),
+    ).toThrow('"order" must be a finite number');
+  });
+
   it('accepts omitted weights and valid modules', () => {
     const captcha = fixture('valid');
     expect(

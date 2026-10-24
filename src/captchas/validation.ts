@@ -44,6 +44,13 @@ export function validateCaptchaModules(entries: DiscoveredCaptcha[]): CaptchaMod
       return invalid(path, '"weight" must be a finite number greater than zero.');
     }
 
+    if (
+      fields.order !== undefined &&
+      (typeof fields.order !== 'number' || !Number.isFinite(fields.order))
+    ) {
+      return invalid(path, '"order" must be a finite number.');
+    }
+
     // The checks above validate each field in the shared TypeScript contract.
     const captcha = candidate as unknown as CaptchaModule;
     const previousPath = ids.get(captcha.id);

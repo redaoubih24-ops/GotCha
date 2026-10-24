@@ -1,6 +1,6 @@
 import { useCallback, useReducer, useState } from 'react';
 import Logo from '../brand/Logo';
-import { getCaptchaById, pickRandomCaptcha } from '../captchas/registry';
+import { getCaptchaById, pickNextCaptcha } from '../captchas/registry';
 import type { CaptchaResult } from '../captchas/types';
 import LoginPage from '../login/LoginPage';
 import CaptchaErrorBoundary, { CRASH_RESULT } from './CaptchaErrorBoundary';
@@ -43,7 +43,7 @@ export default function App() {
       setError(`No CAPTCHA named “${requestedId}”. Open the playground to find an available ID.`);
       return;
     }
-    const captcha = forcedCaptcha ?? pickRandomCaptcha(flow.lastCaptchaId);
+    const captcha = forcedCaptcha ?? pickNextCaptcha(flow.lastCaptchaId);
     if (!captcha) {
       setError('No CAPTCHAs are registered yet. Copy the template to add one.');
       return;

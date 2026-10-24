@@ -37,9 +37,9 @@ src/
   app/                 App shell, routes, and flow state
   brand/               Shared design tokens, logo, and brand voice
   captchas/
-    _template/         Copyable starter; never selected at random
+    _template/         Copyable starter; never shown in the login flow
     <your-captcha>/    One developer's complete challenge
-    registry.ts        Automatic discovery and weighted selection
+    registry.ts        Automatic discovery and the login sequence
     types.ts           Shared CAPTCHA contract
   login/               Pretend login screen
   meme/                Meme transition and audio
@@ -52,7 +52,7 @@ The meme assets bundled with this scaffold are original placeholders. Add media 
 ## Add a CAPTCHA in 5 steps
 
 1. **Create your branch and folder.** Branch from current `main` as `captcha/<name>`, then copy `src/captchas/_template/` to `src/captchas/<your-slug>/`. Keep all your work in that new folder. Folder names starting with `_` are excluded from discovery.
-2. **Make the module yours.** In your folder's `index.tsx`, rename the component and set a unique `id`, a human-readable `title`, and your `author` name. Default-export a `CaptchaModule`; optionally set a positive `weight` (default: `1`). You do not edit `registry.ts` or another central list.
+2. **Make the module yours.** In your folder's `index.tsx`, rename the component and set a unique `id`, a human-readable `title`, and your `author` name. Default-export a `CaptchaModule`; set `order` to choose where it appears in the login sequence (lowest first; omit it to go after the ordered ones). You do not edit `registry.ts` or another central list.
 3. **Build inside your boundary.** Keep styles, helpers, and assets in your own folder. Your implementation may import its own files, `src/captchas/types.ts`, and `src/brand/`. React runtime/type imports are also allowed. Do not import app state, login or meme components, the registry, sibling CAPTCHAs, or other packages. ESLint enforces the boundary for each CAPTCHA folder.
 4. **Complete through the callback.** Receive `onComplete` through `CaptchaProps` and call it once with `{ outcome: 'fail', reason: 'Your ridiculous explanation', memeTag: 'optional-tag' }` or an occasional `'pass'`. The app owns the transition, sound, and return to login. Clean up timers and event listeners when your component unmounts.
 5. **Try it and open a PR.** Visit `/playground` to launch your challenge in isolation, or use `/?captcha=<your-id>` to exercise the login flow with your challenge forced. Add useful behavior tests in your folder, run `npm run check`, record a short demo, and open a PR to `main` using the template.
@@ -75,6 +75,7 @@ export interface CaptchaModule {
   title: string;
   author: string;
   weight?: number;
+  order?: number; // position in the login sequence, lowest first
   Component: React.FC<CaptchaProps>;
 }
 ```
@@ -85,9 +86,10 @@ Treat completion as the end of your challenge. Avoid real credential collection,
 
 `src/captchas/registry.ts` uses Vite's eager `import.meta.glob('./*/index.tsx', { eager: true })` to load modules. Folders beginning with `_` are skipped. The registry exports:
 
-- `getAllCaptchas()` — all playable CAPTCHA modules.
+- `getAllCaptchas()` — all playable CAPTCHA modules, sorted by `order`.
 - `getCaptchaById(id)` — find a module by its unique ID.
-- `pickRandomCaptcha(excludeId?)` — select by relative `weight`, avoiding `excludeId` when another CAPTCHA is available. With only one CAPTCHA, that CAPTCHA can repeat.
+- `pickNextCaptcha(lastId?)` — what the login flow uses: the CAPTCHA after `lastId` in `order`, looping back to the first.
+- `pickRandomCaptcha(excludeId?)` — weighted random pick by `weight`, avoiding `excludeId`. Not used by the flow right now.
 
 The registry test checks every discovered module for required metadata, a component, valid weights, and duplicate IDs. Missing or invalid module exports fail the checks instead of silently disappearing.
 

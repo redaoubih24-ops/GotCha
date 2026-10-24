@@ -33,6 +33,8 @@ const captcha: CaptchaModule = {
   title: 'Your absurd CAPTCHA',
   author: 'Your name',
   weight: 1,
+  // Where it goes in the login sequence (lowest first). Omit to go after the ordered ones.
+  order: 99,
   Component: StarterCaptcha,
 };
 
