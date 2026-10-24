@@ -21,6 +21,8 @@ beforeEach(() => {
   localStorage.clear();
   clips = [];
   play = vi.fn().mockResolvedValue(undefined);
+  // The explosion overlay is a <video>; jsdom can't play media.
+  vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
   vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => entries }));
   vi.stubGlobal(
     'Audio',

@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { CaptchaResult } from '../captchas/types';
 import { assetUrl, loadMemes, peekNextSound, pickMeme, pickSound, type MemeAsset } from './assets';
+import { Explosion } from './Explosion';
 import { MemeArtwork } from './MemeArtwork';
 import './meme.css';
 
@@ -229,6 +230,7 @@ export function ActiveMeme({
           Try again
         </button>
         <div className="meme-cinema__flash" aria-hidden="true" />
+        {meme && !reduced && <Explosion />}
       </div>
     </div>,
     document.body,

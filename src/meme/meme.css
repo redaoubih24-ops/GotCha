@@ -112,7 +112,7 @@
 .meme-continue:hover,
 .meme-replay:hover {
   border-color: var(--color-ink);
-  background: #e0f3b5;
+  background: var(--color-accent-soft);
 }
 
 .meme-return {
@@ -276,7 +276,9 @@
 .meme-cinema {
   /* Adjust these four settings to tune the entrance. Both effects run together. */
   --meme-flash-duration: 1000ms;
-  --meme-flash-brightness: 1; /* White overlay strength: 0 = none, 1 = full white. */
+  /* White overlay strength: 0 = none, 1 = full white. Off because the explosion is the
+     entrance now; fire is blended with `screen`, so it would vanish into a white flash. */
+  --meme-flash-brightness: 0;
   --meme-blur-duration: 1000ms;
   --meme-blur-strength: 18px;
   position: fixed;
@@ -308,6 +310,16 @@
   background: white;
   pointer-events: none;
   animation: meme-white-flash var(--meme-flash-duration) ease-out both;
+}
+.meme-cinema__explosion {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 .meme-visually-hidden {
   position: absolute;
@@ -341,7 +353,8 @@
   .meme-cinema {
     transition: none;
   }
-  .meme-cinema__flash {
+  .meme-cinema__flash,
+  .meme-cinema__explosion {
     display: none;
   }
   .meme-cinema__image {

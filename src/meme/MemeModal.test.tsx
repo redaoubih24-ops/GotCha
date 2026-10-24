@@ -15,6 +15,8 @@ describe('MemeModal', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     play.mockResolvedValue(undefined);
+    // The explosion overlay is a <video>; jsdom can't play media.
+    vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
     pause.mockReset();
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false }));
     vi.stubGlobal(
