@@ -148,8 +148,8 @@
 }
 
 .second-opinion__verdict.is-accepted {
-  border-color: #b4c58b;
-  background: #eaf3d5;
+  border-color: var(--color-ink);
+  background: var(--color-accent-soft);
   color: var(--color-ink);
 }
 
@@ -180,7 +180,7 @@
 }
 
 .second-opinion__button:hover:enabled {
-  background: #c7eb63;
+  background: var(--color-accent-strong);
 }
 
 .second-opinion__button:disabled {

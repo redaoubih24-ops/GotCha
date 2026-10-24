@@ -83,7 +83,7 @@
 }
 
 .rl-tile[aria-pressed='true'] {
-  background: #e3e9cf;
+  background: var(--color-accent-soft);
 }
 
 .rl-tile[aria-pressed='true'] svg {
@@ -153,7 +153,7 @@
 .rl-status:not(:empty) {
   padding: 10px 14px;
   border-top: 1px solid var(--color-line);
-  background: #f4fbdc;
+  background: var(--color-accent-soft);
 }
 
 .rl-pips {
@@ -215,7 +215,7 @@
 }
 
 .rl-verify:hover {
-  background: #c7eb63;
+  background: var(--color-accent-strong);
 }
 
 /* ---------- The runner: a tile with legs, loose on the screen ---------- */

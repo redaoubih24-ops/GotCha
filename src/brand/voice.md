@@ -28,6 +28,8 @@ always in on the joke.
 
 ## Visual voice
 
-Warm paper, near-black ink, and an optimistic lime green. Big type, generous
-space, soft corners, thin rules. The checkbox mascot is an original drawing. Use
+Comic-book loud: sunny yellow paper with halftone dots, hot pink, electric
+blue, near-black ink. Bangers for headlines, Comic Neue for everything else.
+Chunky ink outlines, lopsided corners, hard offset shadows, and slightly wobbly
+edges (the `#gotcha-rough` SVG filter in `index.html`, applied in `rough.css`). The checkbox mascot is an original drawing. Use
 the variables in `tokens.css` in each CAPTCHA instead of inventing a new palette.

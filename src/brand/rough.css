@@ -1,0 +1,477 @@
+/*
+ * The "rough" layer: chunky ink outlines, lopsided corners, hard offset shadows,
+ * halftone paper, and wobbly hand-cut edges. Loaded after every other stylesheet.
+ *
+ * Wobbly edges come from the #gotcha-rough SVG filter in index.html. It is applied
+ * to a ::before "backing card" so the outline wobbles but the text stays crisp.
+ */
+
+body {
+  background-color: var(--color-paper);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-accent) 38%, transparent) 1.7px,
+    transparent 2px
+  );
+  background-size: 18px 18px;
+  font-weight: 700;
+}
+
+/* ---------- Comic-book headlines everywhere ---------- */
+
+h1,
+h2,
+.brand-logo {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.025em !important;
+}
+
+.playground h1 em {
+  font-family: inherit;
+  color: var(--color-accent-strong);
+}
+
+/* ---------- The rough backing card ---------- */
+
+.login-card,
+.captcha-card,
+.login-submit,
+.primary-button,
+.login-mascot-note,
+.login-escalation,
+.dev-banner {
+  isolation: isolate;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.login-card,
+.captcha-card,
+.login-submit,
+.primary-button,
+.login-escalation,
+.dev-banner {
+  position: relative;
+}
+
+.login-card::before,
+.captcha-card::before,
+.login-submit::before,
+.primary-button::before,
+.login-mascot-note::before,
+.login-escalation::before,
+.dev-banner::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: var(--border-chunky);
+  border-radius: inherit;
+  background: var(--rough-fill, var(--color-white));
+  box-shadow: var(--rough-shadow, var(--shadow-pop));
+  filter: url('#gotcha-rough');
+  content: '';
+  pointer-events: none;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* ---------- Header and footer: scribbled rules ---------- */
+
+.site-header,
+.site-footer {
+  border: 0;
+  background-repeat: repeat-x;
+  background-size: 44px 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='12' viewBox='0 0 44 12'%3E%3Cpath d='M0 6 Q11 0 22 6 T44 6' fill='none' stroke='%231b1530' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.site-header {
+  background-position: bottom left;
+}
+
+.site-footer {
+  background-position: top left;
+  color: var(--color-ink);
+  font-size: 13px;
+}
+
+.brand-link .brand-logo {
+  font-size: 2.3rem;
+  transform: rotate(-3deg);
+}
+
+.brand-logo svg {
+  transform: rotate(6deg);
+  filter: url('#gotcha-rough') drop-shadow(2px 2px 0 var(--color-pop-blue));
+}
+
+@media (min-width: 681px) {
+  .site-header nav {
+    font-size: 15px;
+  }
+}
+
+.site-header nav a,
+.site-header nav button {
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-accent-strong);
+  text-decoration: underline wavy var(--color-accent-strong) 2px;
+  text-underline-offset: 6px;
+}
+
+.sound-toggle {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color-ink);
+}
+
+.dev-banner {
+  --rough-fill: var(--color-pop-yellow);
+  margin: 12px 6% 0;
+  font-size: 13px;
+  transform: rotate(-0.6deg);
+}
+
+/* ---------- Login intro ---------- */
+
+.login-eyebrow {
+  width: fit-content;
+  padding: 0.4rem 0.75rem;
+  transform: rotate(-3deg);
+  border: var(--border-chunky);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.login-eyebrow > span {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--color-ink);
+  background: var(--color-accent);
+}
+
+.login-intro h1 {
+  transform: rotate(-2deg);
+  color: var(--color-ink);
+  font-size: clamp(4.4rem, 7.4vw, 7rem);
+  line-height: 0.95;
+  text-shadow:
+    4px 4px 0 var(--color-pop-blue),
+    8px 8px 0 var(--color-ink);
+}
+
+.login-intro h1 > span::after {
+  bottom: 0.02em;
+  height: 0.38em;
+  transform: rotate(-3deg) skewX(-12deg);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  filter: url('#gotcha-rough');
+}
+
+.login-description {
+  color: var(--color-ink);
+  font-size: 1.15rem;
+}
+
+.login-mascot svg {
+  animation: rough-wobble 2.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+.login-mascot-note {
+  --rough-fill: var(--color-pop-yellow);
+  border: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.login-fine-print {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+/* ---------- Login card ---------- */
+
+.login-card {
+  --rough-shadow: 10px 10px 0 var(--color-ink);
+  transform: rotate(1deg);
+}
+
+/* A strip of masking tape holding the card up. */
+.login-card::after {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 120px;
+  height: 30px;
+  transform: translateX(-50%) rotate(-4deg);
+  background: color-mix(in srgb, var(--color-pop-blue) 70%, transparent);
+  clip-path: polygon(3% 8%, 97% 0, 100% 50%, 96% 100%, 2% 92%, 0 45%);
+  content: '';
+}
+
+.login-card-label {
+  font-size: 0.7rem;
+}
+
+.login-card-lock {
+  border: 2px solid var(--color-ink);
+  background: var(--color-pop-yellow);
+  color: var(--color-ink);
+}
+
+.login-card h2 {
+  font-size: clamp(2.4rem, 3.6vw, 3.3rem);
+  line-height: 1;
+}
+
+.login-card h2 > span {
+  color: var(--color-accent-strong);
+  text-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.login-card-description {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+.login-field {
+  font-size: 0.9rem;
+}
+
+.login-input {
+  border: var(--border-chunky);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+.login-input:hover {
+  border-color: var(--color-ink);
+  background: var(--color-soft);
+}
+
+.login-input:focus-visible {
+  outline: 4px solid var(--color-pop-blue);
+  outline-offset: 2px;
+  background: var(--color-white);
+}
+
+.login-input::placeholder {
+  color: #8a7fa6;
+}
+
+.login-forgot {
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline wavy var(--color-accent-strong);
+}
+
+.login-forgot-reply {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.login-escalation {
+  --rough-fill: var(--color-pop-yellow);
+  border: 0;
+  font-size: 0.95rem;
+  transform: rotate(-1deg);
+}
+
+.login-escalation-count {
+  color: var(--color-pop-yellow);
+  font-size: 0.7rem;
+}
+
+.login-human-note {
+  color: var(--color-ink);
+  font-size: 0.82rem;
+}
+
+.login-check-icon {
+  width: 22px;
+  height: 22px;
+  transform: rotate(-8deg);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Buttons: squishy, loud, pressable ---------- */
+
+.login-submit,
+.primary-button {
+  --rough-fill: var(--color-accent);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  transition: transform var(--transition-fast);
+}
+
+.login-submit:hover,
+.primary-button:hover {
+  --rough-fill: var(--color-accent-strong);
+  --rough-shadow: 8px 8px 0 var(--color-ink);
+  transform: translate(-2px, -3px) rotate(-1.5deg);
+}
+
+.login-submit:active,
+.primary-button:active {
+  --rough-shadow: 1px 1px 0 var(--color-ink);
+  transform: translate(3px, 3px);
+}
+
+.secondary-button,
+.icon-button {
+  border: var(--border-chunky);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-weight: 700;
+}
+
+.secondary-button:hover,
+.icon-button:hover {
+  background: var(--color-pop-yellow);
+}
+
+.login-demo-note {
+  border-top: 3px dashed var(--color-ink);
+}
+
+.login-demo-badge {
+  transform: rotate(-5deg);
+  border: 2px solid var(--color-ink);
+  background: var(--color-pop-yellow);
+  color: var(--color-ink);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.login-demo-note p {
+  color: var(--color-ink);
+  font-size: 0.75rem;
+}
+
+/* ---------- Challenge dialog ---------- */
+
+.challenge-dialog {
+  border: 4px solid var(--color-ink);
+  border-radius: var(--radius-md);
+  box-shadow:
+    10px 10px 0 var(--color-accent),
+    14px 14px 0 var(--color-ink);
+}
+
+.challenge-dialog::backdrop {
+  background: color-mix(in srgb, var(--color-pop-blue) 55%, var(--color-ink));
+}
+
+.challenge-header {
+  border-bottom: var(--border-chunky);
+  background: var(--color-pop-yellow);
+}
+
+.challenge-shield {
+  border: 2px solid var(--color-ink);
+  background: var(--color-accent);
+  transform: rotate(-6deg);
+}
+
+.challenge-heading h2 {
+  font-size: 24px;
+}
+
+.challenge-eyebrow,
+.challenge-footer {
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.challenge-footer {
+  border-top: 3px dashed var(--color-ink);
+  background: var(--color-white);
+}
+
+/* ---------- Playground ---------- */
+
+.playground h1 {
+  transform: rotate(-1.5deg);
+  text-shadow: 4px 4px 0 var(--color-pop-blue);
+}
+
+.playground-intro {
+  color: var(--color-ink);
+}
+
+.captcha-card {
+  --rough-shadow: 7px 7px 0 var(--color-ink);
+}
+
+.captcha-card:nth-child(4n + 1) {
+  --rough-fill: var(--color-white);
+  transform: rotate(-1deg);
+}
+.captcha-card:nth-child(4n + 2) {
+  --rough-fill: var(--color-accent-soft);
+  transform: rotate(0.8deg);
+}
+.captcha-card:nth-child(4n + 3) {
+  --rough-fill: #d6f4ff;
+  transform: rotate(-0.5deg);
+}
+.captcha-card:nth-child(4n + 4) {
+  --rough-fill: #e6ffd9;
+  transform: rotate(1.2deg);
+}
+
+.captcha-card p,
+.captcha-card code {
+  color: var(--color-ink);
+  font-size: 14px;
+}
+
+/* ---------- Meme modal ---------- */
+
+.meme-modal {
+  border: 4px solid var(--color-ink);
+  box-shadow:
+    10px 10px 0 var(--color-pop-blue),
+    14px 14px 0 var(--color-ink);
+}
+
+@keyframes rough-wobble {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2.5deg) translateY(-4px);
+  }
+}
+
+@media (max-width: 780px) {
+  .login-intro h1 {
+    font-size: clamp(4rem, 15vw, 5.8rem);
+  }
+}

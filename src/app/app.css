@@ -31,7 +31,7 @@ a {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 3px solid #6b7d3b;
+  outline: 3px solid var(--color-pop-blue);
   outline-offset: 5px;
 }
 ::selection {
@@ -99,7 +99,7 @@ input:focus-visible {
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: #7b8a54;
+  background: var(--color-pop-green);
   border-radius: 50%;
   margin: 0 5px 1px 12px;
 }

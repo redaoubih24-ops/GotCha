@@ -15,16 +15,16 @@ function CheckboxMascot() {
   return (
     <div className="login-mascot" aria-hidden="true">
       <svg viewBox="0 0 360 236" fill="none">
-        <ellipse cx="183" cy="218" rx="100" ry="10" fill="#18221a" opacity="0.07" />
+        <ellipse cx="183" cy="218" rx="100" ry="10" fill="#1b1530" opacity="0.07" />
         <path
           d="M113 149c-26 5-34 24-52 17m191-25c26-18 41-9 49-29"
-          stroke="#18221a"
+          stroke="#1b1530"
           strokeWidth="7"
           strokeLinecap="round"
         />
         <path
           d="m144 185-11 26-21 1m103-27 10 26 22 1"
-          stroke="#18221a"
+          stroke="#1b1530"
           strokeWidth="7"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -36,25 +36,25 @@ function CheckboxMascot() {
           height="160"
           rx="37"
           transform="rotate(-7 105 30)"
-          fill="#d4f57a"
-          stroke="#18221a"
+          fill="var(--color-pop-blue, #38c6ff)"
+          stroke="#1b1530"
           strokeWidth="3"
         />
         <path
           d="m128 57 15-2m-17 11 8-1"
-          stroke="#18221a"
+          stroke="#1b1530"
           strokeWidth="3"
           strokeLinecap="round"
           opacity="0.25"
         />
-        <ellipse cx="153" cy="100" rx="16" ry="22" transform="rotate(-7 153 100)" fill="#fffef9" />
-        <ellipse cx="202" cy="94" rx="16" ry="22" transform="rotate(-7 202 94)" fill="#fffef9" />
-        <ellipse cx="157" cy="103" rx="7" ry="11" transform="rotate(-7 157 103)" fill="#18221a" />
-        <ellipse cx="206" cy="97" rx="7" ry="11" transform="rotate(-7 206 97)" fill="#18221a" />
-        <path d="M163 139c11 10 24 8 32-4" stroke="#18221a" strokeWidth="4" strokeLinecap="round" />
+        <ellipse cx="153" cy="100" rx="16" ry="22" transform="rotate(-7 153 100)" fill="#ffffff" />
+        <ellipse cx="202" cy="94" rx="16" ry="22" transform="rotate(-7 202 94)" fill="#ffffff" />
+        <ellipse cx="157" cy="103" rx="7" ry="11" transform="rotate(-7 157 103)" fill="#1b1530" />
+        <ellipse cx="206" cy="97" rx="7" ry="11" transform="rotate(-7 206 97)" fill="#1b1530" />
+        <path d="M163 139c11 10 24 8 32-4" stroke="#1b1530" strokeWidth="4" strokeLinecap="round" />
         <path
           d="m271 43 7-13m9 26 14-3M80 74 67 65"
-          stroke="#18221a"
+          stroke="#1b1530"
           strokeWidth="3"
           strokeLinecap="round"
         />

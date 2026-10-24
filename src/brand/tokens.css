@@ -1,22 +1,33 @@
 :root {
   color-scheme: light;
-  --color-ink: #18221a;
-  --color-paper: #f5f3ea;
-  --color-accent: #d4f57a;
-  --color-muted: #72776e;
-  --color-white: #fffef9;
-  --color-line: #dedfd3;
-  --color-soft: #edeee4;
-  --color-danger: #ad352d;
-  --font-body: 'Arial', 'Helvetica Neue', sans-serif;
-  --font-display: 'Arial', 'Helvetica Neue', sans-serif;
-  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
+  /* Loud, hand-made, slightly unhinged. */
+  --color-ink: #1b1530;
+  --color-paper: #fff1a6;
+  --color-accent: #ff5cad;
+  --color-accent-strong: #ff2e93;
+  --color-accent-soft: #ffd3ea;
+  --color-pop-blue: #38c6ff;
+  --color-pop-green: #6dff4f;
+  --color-pop-orange: #ff8a1f;
+  --color-pop-yellow: #ffe03a;
+  --color-success: #0b7a3b;
+  --color-muted: #4a3f66;
+  --color-white: #ffffff;
+  --color-line: #1b1530;
+  --color-soft: #ffe7f3;
+  --color-danger: #e0182d;
+  --font-body: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+  --font-display: 'Bangers', 'Comic Sans MS', 'Chalkboard SE', cursive;
+  --font-mono: 'Comic Mono', 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', monospace;
+  /* Lopsided corners so nothing looks machine-cut. */
+  --radius-sm: 14px 5px 12px 6px / 6px 12px 5px 14px;
+  --radius-md: 24px 8px 20px 10px / 10px 22px 8px 24px;
+  --radius-lg: 255px 20px 225px 20px / 20px 225px 20px 255px;
   --radius-pill: 999px;
-  --shadow-card: 0 10px 0 -4px #e4e5d7;
-  --transition-fast: 160ms ease;
+  --border-chunky: 3px solid var(--color-ink);
+  --shadow-card: 8px 8px 0 var(--color-ink);
+  --shadow-pop: 5px 5px 0 var(--color-ink);
+  --transition-fast: 140ms cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 
 .brand-logo {
@@ -25,9 +36,10 @@
   gap: 0.5rem;
   color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 900;
-  letter-spacing: -0.09em;
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-shadow: 2px 2px 0 var(--color-accent);
   line-height: 1;
 }
 

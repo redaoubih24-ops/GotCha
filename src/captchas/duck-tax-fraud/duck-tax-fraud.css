@@ -151,7 +151,7 @@
 }
 
 .duck-tax__verify:hover:enabled {
-  background: #c7eb63;
+  background: var(--color-accent-strong);
 }
 
 .duck-tax__verify:disabled {

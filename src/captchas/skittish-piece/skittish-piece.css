@@ -144,7 +144,7 @@
 }
 
 .sp-shepherd circle:first-child {
-  fill: rgb(212 245 122 / 0.5);
+  fill: var(--color-accent-soft);
   stroke: var(--color-ink);
   stroke-width: 1.5;
 }
@@ -219,7 +219,7 @@
 }
 
 .sp-notice-ok {
-  color: #4f6b25;
+  color: var(--color-success);
   font-weight: 600;
 }
 

@@ -9,14 +9,14 @@ export function Logo({ className = '' }: LogoProps) {
         <rect x="2" y="2" width="28" height="28" rx="8" fill="currentColor" />
         <path
           d="m9 16 4.5 4.5L23 11"
-          stroke="var(--color-accent, #d4f57a)"
+          stroke="var(--color-accent, #ff5cad)"
           strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </svg>
       <span aria-hidden="true">
-        GotCha<span style={{ color: '#7e9c3d' }}>.</span>
+        GotCha<span style={{ color: 'var(--color-accent-strong, #ff2e93)' }}>.</span>
       </span>
     </span>
   );
